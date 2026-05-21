@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KrishiGuard AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">KG</div>
+          <div>
+            <strong>KrishiGuard AI</strong>
+            <span>Agriculture & environment intelligence</span>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Primary">
+          <a class="active" href="#overview">Overview</a>
+          <a href="#crop-doctor">Crop Doctor</a>
+          <a href="#advisory">AI Advisory</a>
+          <a href="#soil">Soil & Irrigation</a>
+          <a href="#environment">Environment</a>
+        </nav>
+
+        <div class="contest-card">
+          <span>Contest Ready</span>
+          <strong>AI workflow + model output + user interaction</strong>
+          <p>Designed for the Indian Servers AI Model Development Contest agriculture/environment track.</p>
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Field-first intelligence</p>
+            <h1>AI guidance for healthier crops, smarter water use, and cleaner communities.</h1>
+          </div>
+          <div class="top-actions">
+            <label class="select-label" for="language">Language</label>
+            <select id="language">
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+              <option value="te">Telugu</option>
+            </select>
+          </div>
+        </header>
+
+        <section id="overview" class="hero-grid">
+          <article class="hero-panel">
+            <div class="hero-copy">
+              <p class="eyebrow">Live farm command center</p>
+              <h2 data-i18n="heroTitle">Detect risk, understand why, and act with confidence.</h2>
+              <p data-i18n="heroBody">Upload a crop image, enter field conditions, and get clear recommendations with confidence, limitations, and expert-advice warnings.</p>
+            </div>
+            <div class="field-visual" aria-label="Animated crop health visualization">
+              <div class="sun"></div>
+              <div class="field-row row-one"></div>
+              <div class="field-row row-two"></div>
+              <div class="field-row row-three"></div>
+              <div class="scan-line"></div>
+              <div class="sensor-card">
+                <span>AI Scan</span>
+                <strong>87%</strong>
+                <small>leaf health confidence</small>
+              </div>
+            </div>
+          </article>
+
+          <div class="metric-grid">
+            <article class="metric-card">
+              <span>Disease risk</span>
+              <strong id="riskMetric">Medium</strong>
+              <small>Based on humidity and visual symptoms</small>
+            </article>
+            <article class="metric-card">
+              <span>Water need</span>
+              <strong id="waterMetric">18 mm</strong>
+              <small>Next 48 hours estimate</small>
+            </article>
+            <article class="metric-card">
+              <span>Eco score</span>
+              <strong id="ecoMetric">82/100</strong>
+              <small>Soil, water, and waste actions</small>
+            </article>
+          </div>
+        </section>
+
+        <section id="crop-doctor" class="section-grid">
+          <div class="section-heading">
+            <p class="eyebrow">Computer vision demo</p>
+            <h2>AI Crop Doctor</h2>
+            <p>Show a complete sample image/data workflow in your demo video: upload, analyze, recommendation, explanation, and safety warning.</p>
+          </div>
+
+          <article class="tool-card">
+            <div class="upload-zone" id="uploadZone">
+              <input id="cropImage" type="file" accept="image/*" />
+              <div id="preview" class="preview-placeholder">
+                <span>+</span>
+                <strong>Upload leaf or crop image</strong>
+                <small>Demo model uses image color, crop, symptoms, and environment inputs.</small>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <label>
+                Crop
+                <select id="cropType">
+                  <option>Rice</option>
+                  <option>Tomato</option>
+                  <option>Cotton</option>
+                  <option>Chilli</option>
+                  <option>Maize</option>
+                </select>
+              </label>
+              <label>
+                Visible symptom
+                <select id="symptom">
+                  <option>Yellow spots</option>
+                  <option>Brown patches</option>
+                  <option>Leaf curl</option>
+                  <option>White powder</option>
+                  <option>Wilting</option>
+                </select>
+              </label>
+              <label>
+                Humidity
+                <input id="humidity" type="range" min="25" max="98" value="74" />
+                <output id="humidityOut">74%</output>
+              </label>
+              <label>
+                Temperature
+                <input id="temperature" type="range" min="15" max="45" value="31" />
+                <output id="temperatureOut">31°C</output>
+              </label>
+            </div>
+
+            <button class="primary-btn" id="analyzeBtn">Analyze crop risk</button>
+          </article>
+
+          <article class="result-panel" aria-live="polite">
+            <div class="result-topline">
+              <span id="diagnosisBadge">Awaiting scan</span>
+              <strong id="confidence">--</strong>
+            </div>
+            <h3 id="diagnosisTitle">Upload a sample or run with field inputs.</h3>
+            <p id="diagnosisText">The recommendation screen will explain likely issue, reasoning, confidence, limitations, and next actions in field-friendly language.</p>
+            <div class="explain-box">
+              <strong>Reasoning</strong>
+              <ul id="reasonList">
+                <li>Image and field data not analyzed yet.</li>
+              </ul>
+            </div>
+            <div class="warning-box">
+              <strong>Expert warning</strong>
+              <p id="warningText">For severe crop loss, unknown pesticide dosage, or livestock/human exposure risk, consult a local agriculture officer or certified expert.</p>
+            </div>
+          </article>
+        </section>
+
+        <section id="advisory" class="section-grid reverse">
+          <div class="section-heading">
+            <p class="eyebrow">Advisory chat</p>
+            <h2>Ask KrishiGuard</h2>
+            <p>Natural-language farm support with structured, source-like reasoning. This is demo-safe and can later connect to Gemini, OpenAI, Groq, Qwen, RAG, YOLO, or weather APIs.</p>
+          </div>
+
+          <article class="chat-card">
+            <div class="chat-log" id="chatLog">
+              <div class="message bot">Namaste. Ask about crop disease, irrigation, soil, weather risk, waste segregation, or pollution monitoring.</div>
+            </div>
+            <form id="chatForm" class="chat-form">
+              <input id="chatInput" placeholder="Example: My tomato leaves have white powder after rain" />
+              <button type="submit">Send</button>
+            </form>
+            <div class="quick-prompts">
+              <button data-prompt="How much should I irrigate rice this week?">Irrigation</button>
+              <button data-prompt="What should I do for tomato leaf curl?">Leaf curl</button>
+              <button data-prompt="How can my village segregate wet and dry waste?">Waste</button>
+            </div>
+          </article>
+        </section>
+
+        <section id="soil" class="section-grid">
+          <div class="section-heading">
+            <p class="eyebrow">Prediction workflow</p>
+            <h2>Soil Health & Smart Irrigation</h2>
+            <p>Enter simple field values and get water and soil guidance with transparent assumptions.</p>
+          </div>
+
+          <article class="tool-card">
+            <div class="form-grid">
+              <label>
+                Soil type
+                <select id="soilType">
+                  <option value="loam">Loam</option>
+                  <option value="clay">Clay</option>
+                  <option value="sandy">Sandy</option>
+                  <option value="black">Black cotton soil</option>
+                </select>
+              </label>
+              <label>
+                Soil moisture
+                <input id="moisture" type="range" min="5" max="90" value="42" />
+                <output id="moistureOut">42%</output>
+              </label>
+              <label>
+                Rain forecast
+                <input id="rain" type="range" min="0" max="80" value="12" />
+                <output id="rainOut">12 mm</output>
+              </label>
+              <label>
+                Soil pH
+                <input id="ph" type="range" min="45" max="90" value="67" />
+                <output id="phOut">6.7</output>
+              </label>
+            </div>
+            <div class="advice-strip">
+              <div>
+                <span>Recommended irrigation</span>
+                <strong id="irrigationAdvice">18 mm in 48 hours</strong>
+              </div>
+              <div>
+                <span>Soil action</span>
+                <strong id="soilAdvice">Add organic compost</strong>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section id="environment" class="section-grid reverse">
+          <div class="section-heading">
+            <p class="eyebrow">Environment intelligence</p>
+            <h2>Pollution & Waste Assistant</h2>
+            <p>Useful beyond farms: village waste segregation, air/water risk notes, and sustainability scoring.</p>
+          </div>
+
+          <article class="environment-board">
+            <div class="waste-classifier">
+              <label for="wasteInput">Waste item</label>
+              <div class="inline-form">
+                <input id="wasteInput" placeholder="banana peel, plastic bottle, pesticide container" />
+                <button id="classifyWaste">Classify</button>
+              </div>
+              <div id="wasteResult" class="waste-result">Enter an item to classify disposal guidance.</div>
+            </div>
+            <div class="eco-actions">
+              <h3>Today’s sustainability actions</h3>
+              <label><input type="checkbox" class="ecoCheck" checked /> Use drip or alternate wetting irrigation</label>
+              <label><input type="checkbox" class="ecoCheck" /> Compost wet farm waste</label>
+              <label><input type="checkbox" class="ecoCheck" checked /> Avoid open burning</label>
+              <label><input type="checkbox" class="ecoCheck" /> Safe pesticide container return</label>
+            </div>
+          </article>
+        </section>
+
+        <section class="architecture">
+          <p class="eyebrow">Model/API explanation for demo</p>
+          <h2>How to present the AI approach</h2>
+          <div class="architecture-grid">
+            <div><strong>Vision</strong><span>Leaf image to disease/pest risk using YOLO, CNN, Gemini Vision, Qwen-VL, or OpenAI vision.</span></div>
+            <div><strong>Advisory</strong><span>RAG over crop packages, extension manuals, soil guides, and local-language prompts.</span></div>
+            <div><strong>Prediction</strong><span>Weather, moisture, crop stage, and soil type combined for irrigation and risk scoring.</span></div>
+            <div><strong>Safety</strong><span>Confidence, limitations, expert escalation, and pesticide caution shown with every result.</span></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
